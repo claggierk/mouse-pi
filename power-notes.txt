@@ -1,0 +1,8 @@
+OUT     : GPIO23
+IN      : GPIO24
+
+RST+    : nothing
+RST-    : LED side of power switch
+
+SW+     : middle of power switch
+SW-     : back side of power switch
