@@ -5,7 +5,7 @@ import time
 import sys
 
 globals = {
-    'zoom_step'     : 0.03,
+    'zoom_step'     : 0.001,
 
     'zoom_xy_min'   : 0.0,
     'zoom_xy'       : 0.0,
@@ -78,22 +78,24 @@ def button_pressed_21(pin):
     sys.exit(0)
 
 def button_pressed_17(pin):
-    global pin_17
     print "pin:", pin
-    zoom_in()
-    #print "pin_17", pin_17
-    #while pin_17 == True:
-    #    print('GPIO #17 button pressed')
-    #    time.sleep(0.2)
+    while True:
+        pin_17 = GPIO.input(17)
+        if pin_17 == True:
+            zoom_in()
+            time.sleep(0.01)
+        else:
+            break
 
 def button_pressed_18(pin):
-    global pin_18
     print "pin:", pin
-    zoom_out()
-    #print "pin_18", pin_18
-    #while pin_17 == True:
-    #    print('GPIO #18 button pressed')
-    #    time.sleep(0.2)
+    while True:
+        pin_18 = GPIO.input(18)
+        if pin_18 == False:
+            zoom_out()
+            time.sleep(0.01)
+        else:
+            break
 
 def configure_button_listeners():
     GPIO.setmode(GPIO.BCM)
